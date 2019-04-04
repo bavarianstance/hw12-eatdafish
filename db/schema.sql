@@ -1,12 +1,12 @@
 ### Schema
 
-CREATE DATABASE cat_db;
-USE cat_db;
+CREATE DATABASE IF NOT EXISTS fish_db;
+USE fish_db;
 
-CREATE TABLE cats
+CREATE TABLE fish
 (
 	id int NOT NULL AUTO_INCREMENT,
-	name varchar(255) NOT NULL,
-	sleepy BOOLEAN DEFAULT false,
+	fish_name varchar(255) NOT NULL,
+	eaten BOOLEAN DEFAULT false,
 	PRIMARY KEY (id)
 );
