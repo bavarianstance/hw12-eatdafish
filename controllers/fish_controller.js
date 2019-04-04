@@ -3,57 +3,30 @@ var express = require("express");
 var router = express.Router();
 
 // Import the model (cat.js) to use its database functions.
-var cat = require("../models/cat.js");
+var fish = require("../models/fish.js");
 
 // Create all our routes and set up logic within those routes where required.
 router.get("/", function(req, res) {
-  cat.all(function(data) {
-    var hbsObject = {
-      cats: data
-    };
-    console.log(hbsObject);
-    res.render("index", hbsObject);
+  res.redirect("/fish");
+  });
+
+router.get("/fish", function(req,res){
+  fish.all(function(fishData){
+    res.render("index", {fish_data: fishData});
   });
 });
 
-router.post("/api/cats", function(req, res) {
-  cat.create([
-    "name", "sleepy"
-  ], [
-    req.body.name, req.body.sleepy
-  ], function(result) {
-    // Send back the ID of the new quote
-    res.json({ id: result.insertId });
+router.post("/fish/add", function(req,res){
+  fish.create(req.body.fish_name, function(response){
+    console.log(response);
+    res.redirect("/");
   });
 });
 
-router.put("/api/cats/:id", function(req, res) {
-  var condition = "id = " + req.params.id;
-
-  console.log("condition", condition);
-
-  cat.update({
-    sleepy: req.body.sleepy
-  }, condition, function(result) {
-    if (result.changedRows == 0) {
-      // If no rows were changed, then the ID must not exist, so 404
-      return res.status(404).end();
-    } else {
-      res.status(200).end();
-    }
-  });
-});
-
-router.delete("/api/cats/:id", function(req, res) {
-  var condition = "id = " + req.params.id;
-  cat.delete(condition, function(result) {
-      if (result.changedRows == 0) {
-      // If no rows were changed, then the ID must not exist, so 404
-      return res.status(404).end();
-    } else {
-      res.status(200).end();
-  }
-  console.log("delete successful");
+router.put("/fish/:id", function(req,res){
+  fish.update(req.params.id, function(response){
+    console.log(response);
+    res.sendStatus(200);
   });
 });
 
