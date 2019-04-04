@@ -15,7 +15,7 @@ var fish = {
       [
       name, false
       ], cb);
-  }
+  },
 
   update: function(id, cb) {
     var unique_id = "id=" + id;

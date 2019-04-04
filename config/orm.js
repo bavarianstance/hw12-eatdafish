@@ -52,13 +52,13 @@ var orm = {
     });
   },
   
-  update: function(table, objColVals, condition, cb) {
+  update: function(table, objColVals, unique_id, cb) {
     var queryString = "UPDATE " + table;
 
     queryString += " SET ";
     queryString += objToSql(objColVals);
     queryString += " WHERE ";
-    queryString += condition;
+    queryString += unique_id;
 
     console.log(queryString);
     connection.query(queryString, function(err, result) {

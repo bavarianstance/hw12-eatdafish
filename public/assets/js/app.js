@@ -2,7 +2,7 @@ $(function(){
 	$(".eatfish-form").on("submit", function(event){
 		event.preventDefault();
 
-	var fish_id = $(this).children(".fish_id").val();
+	var fish_id = $(this).children("#fish_name").val();
 	console.log(fish_id);
 
 	$.ajax({
