@@ -1,38 +1,44 @@
-<h1>Cats!</h1>
-
-<h2>Cats that are not sleepy!</h2>
-
-<ul>
-  {{#each cats}}
-    {{#unless sleepy}}
-      {{> cats/cat-block sleep=true}}
-    {{/unless}}
-  {{/each}}
-</ul>
-
-<h2>Cats that are sleepy!</h2>
-
-<ul>
-  {{#each cats}}
-    {{#if sleepy}}
-      {{> cats/cat-block sleep=false}}
-    {{/if}}
-  {{/each}}
-</ul>
-
-<h2>Add a Cat</h2>
-<form class="create-form">
-
-  <div class="form-group">
-    <label for="ca">Cat Name:</label>
-    <input type="text" id="ca" name="name">
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 text-center" id="top-banner">
+        <img src="../public/assets/img/jianyang.png">
+        <h2>You Eat Da Fish!</h2>
+    </div>
+    <div class="col-md-6 text-center" id="action">
+      <div class="row">
+        {{#each fish_data}}
+          {{#unless this.eaten}}
+          <div class="col-md-8 text-center">
+            {{this.id}}.{{this.fish_name}}
+          </div>
+         <div class="col-md-4 text-center">
+          <form class="eatfish-form button-size">
+              <input type="hidden" id="fish_name" type="text" value={{this.id}}>
+              <button type="submit" class="btn btn-danger">Eat Da Fish!</button>
+          </form>
+         </div> 
+         {{/unless}}
+         {{/each}}
+      </div>
+    </div>
+    <div class="col-md-5 text-center" id="action">
+      {{#each fish_data}}
+        {{#if this.eaten}}
+          <input type="text" class="form-control" placeholder="{{this.id}}.{{this.fish_name}}" readonly>
+          {{/if}}
+          {{/each}}
+    </div>
   </div>
+</div>
 
-  <div class="form-group">
-    <label for="slee">Sleepy?</label><br>
-    <input type="radio" name="sleepy" value="1" checked> Sleepy!<br>
-    <input type="radio" name="sleepy" value="0"> Awake
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 text-center" id="submit">
+      <form action="/fish/add" method="POST">
+        <input type="text" class="form-control" name="fish_name" value="" id="new_fish">
+        <button type="submit" class="btn btn-warning" id="submit-button">Enter</button>
+      </form>
+      <p>Enter a new fish you'd like to eat.</p>
+    </div>
   </div>
-
-  <button type="submit">Add Cat</button>
-</form>
+</div>
