@@ -1,0 +1,20 @@
+#top-banner {
+ 	background: red;
+  background: linear-gradient(to right, orange , yellow, green, cyan, blue, violet);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 60px;
+  line-height: 60px;
+    }
+
+  input {
+  	text-align:center;
+  }
+
+  .newFishText {
+font-weight:bold;
+  }
+
+  #action h3{
+  	text-shadow: 4px 3px 0px #fff, 9px 8px 0px rgba(0,0,0,0.15);
+  }
