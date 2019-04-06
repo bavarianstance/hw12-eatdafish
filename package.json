@@ -1,10 +1,9 @@
 {
   "name": "hw12-eatdafish",
   "version": "1.0.0",
-  "description": "",
+  "description": "## Link to Live Deployed Page on Heroku [Heroku Deployed App](https://aqueous-journey-40078.herokuapp.com/fish)",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "repository": {
@@ -23,7 +22,5 @@
     "express-handlebars": "^3.0.2",
     "mysql": "^2.16.0"
   },
-  "scripts": {
-    "start": "node server.js"
-  }
+  "devDependencies": {}
 }
