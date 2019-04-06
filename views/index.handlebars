@@ -7,12 +7,16 @@
     <div class="col-md-6 text-center" id="action">
       <h3>Fish on da table</h3>
       <div class="row">
-        {{#each fish_data}}
+{{!--         handlebars for dynamic html generation--}}    
+          {{!-- list each fish available  --}}
+          {{#each fish_data}}
+        {{!--   unless eaten = true --}}
           {{#unless this.eaten}}
           <div class="col-md-8 text-center">
             {{this.id}}. {{this.fish_name}}
           </div>
          <div class="col-md-4 text-center">
+{{!--           submit form for eating da fish--}}
           <form class="eatfish-form button-size">
               <input type="hidden" id="fish_name" type="text" value={{this.id}}>
               <button type="submit" class="btn btn-danger">Eat Da Fish!</button>
@@ -24,7 +28,10 @@
     </div>
     <div class="col-md-5 text-center" id="action">
       <h3>Fish in da belly</h3>
+      {{!-- handlebars dynamic html generation --}}
+      {{!-- list each fish available --}}
       {{#each fish_data}}
+      {{!-- if fish eaten, populate below form input, grayed out --}}
         {{#if this.eaten}}
           <input type="text" class="form-control" placeholder="{{this.id}}. {{this.fish_name}}" readonly>
           {{/if}}
@@ -35,6 +42,7 @@
 <br>
 <div class="container">
   <div class="row">
+{{!--     submit form for new fish--}}
     <div class="col-md-12 text-center" id="submit">
       <form action="/fish/add" method="POST">
         <p class="newFishText">Enter a new fish you'd like to eat.</p>
@@ -43,7 +51,8 @@
         <button type="submit" class="btn btn-warning" id="submit-button">Enter</button>
       </form>
       <br>
-      <img src="/assets/img/eatdafish.gif">
+{{!--       EAT DA FISH--}}      
+    <img src="/assets/img/eatdafish.gif">
     </div>
   </div>
 </div>

@@ -1,6 +1,7 @@
 // Import MySQL connection.
 var connection = require("../config/connection.js");
 
+// helper function for gen ??? for SQL query
 function printQuestionMarks(num) {
   var arr = [];
 
@@ -11,6 +12,7 @@ function printQuestionMarks(num) {
   return arr.toString();
 }
 
+// helper function to convert objects to sql compatible syntax for query
 function objToSql(ob) {
   var arr = [];
 
@@ -21,7 +23,9 @@ function objToSql(ob) {
   return arr.toString();
 }
 
+// def orm object and method calls
 var orm = {
+  // def sql query for list all fish in db
   all: function(tableInput, cb) {
     var queryString = "SELECT * FROM " + tableInput + ";";
     connection.query(queryString, function(err, result) {
@@ -31,7 +35,7 @@ var orm = {
       cb(result);
     });
   },
-
+  // def sql query for adding new fish to db
   create: function(table, cols, vals, cb) {
     var queryString = "INSERT INTO " + table;
 
@@ -51,7 +55,7 @@ var orm = {
       cb(result);
     });
   },
-  
+  // update eaten boolean in fish db by unique id
   update: function(table, objColVals, unique_id, cb) {
     var queryString = "UPDATE " + table;
 
